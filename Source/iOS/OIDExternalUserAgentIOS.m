@@ -23,6 +23,7 @@
 #import "OIDErrorUtilities.h"
 #import "OIDExternalUserAgentSession.h"
 #import "OIDExternalUserAgentRequest.h"
+#import "UIApplication+openURL.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -116,7 +117,7 @@ static id<OIDSafariViewControllerFactory> __nullable gSafariViewControllerFactor
     [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
     openedSafari = YES;
   } else {
-    openedSafari = [[UIApplication sharedApplication] openURL:requestURL];
+    openedSafari = [UIApplication openURL:requestURL];
   }
 
   if (!openedSafari) {
